@@ -80,6 +80,19 @@
     box-sizing: border-box;
 }
 
+.icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.125em;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.icon-sprite {
+    display: none;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) + 1rem);
@@ -481,7 +494,8 @@ a {
     font-weight: 600;
 }
 
-.trust-item i {
+.trust-item i,
+.trust-item .icon {
     color: var(--burnt-orange);
     font-size: 1.25rem;
 }
@@ -652,7 +666,8 @@ a {
     font-size: 0.9rem;
 }
 
-.service-features i {
+.service-features i,
+.service-features .icon {
     color: var(--success-green);
     font-size: 0.875rem;
 }
@@ -692,7 +707,8 @@ a {
     gap: 0.75rem;
 }
 
-.service-detail h3 i {
+.service-detail h3 i,
+.service-detail h3 .icon {
     color: var(--burnt-orange);
 }
 
@@ -746,7 +762,8 @@ a {
     gap: 0.5rem;
 }
 
-.areas-list h3 i {
+.areas-list h3 i,
+.areas-list h3 .icon {
     color: var(--burnt-orange);
 }
 
@@ -812,7 +829,8 @@ a {
     gap: 1rem;
 }
 
-.map-placeholder > i {
+.map-placeholder > i,
+.map-placeholder > .icon {
     font-size: 3rem;
 }
 
@@ -828,7 +846,8 @@ a {
     gap: 0.5rem;
 }
 
-.map-placeholder p i {
+.map-placeholder p i,
+.map-placeholder p .icon {
     color: var(--accent-gold);
     font-size: 0.75rem;
 }
@@ -1008,7 +1027,8 @@ a {
     gap: 0.5rem;
 }
 
-.gallery-hint i {
+.gallery-hint i,
+.gallery-hint .icon {
     color: var(--burnt-orange);
 }
 
@@ -1100,7 +1120,8 @@ a {
     font-style: italic;
 }
 
-.about-texas i {
+.about-texas i,
+.about-texas .icon {
     color: var(--burnt-orange);
     margin-top: 0.3rem;
     flex-shrink: 0;
@@ -1365,7 +1386,8 @@ a {
     border-top-color: var(--burnt-orange);
 }
 
-.serve-card > i {
+.serve-card > i,
+.serve-card > .icon {
     font-size: 2.25rem;
     color: var(--steel-blue);
     margin-bottom: 1.25rem;
@@ -1399,7 +1421,8 @@ a {
     font-size: 0.95rem;
 }
 
-.serve-list i {
+.serve-list i,
+.serve-list .icon {
     color: var(--success-green);
     font-size: 0.875rem;
     margin-top: 0.3rem;
@@ -1557,17 +1580,19 @@ a {
 }
 
 .faq-item summary::after {
-    content: '\f067';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    color: var(--burnt-orange);
-    font-size: 0.875rem;
+    content: '';
+    width: 0.875rem;
+    height: 0.875rem;
+    background-color: var(--burnt-orange);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z'/%3E%3C/svg%3E") center / contain no-repeat;
     transition: transform 0.3s ease;
     flex-shrink: 0;
 }
 
 .faq-item[open] summary::after {
-    content: '\f068';
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M432 256c0 17.7-14.3 32-32 32H48c-17.7 0-32-14.3-32-32s14.3-32 32-32H400c17.7 0 32 14.3 32 32z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M432 256c0 17.7-14.3 32-32 32H48c-17.7 0-32-14.3-32-32s14.3-32 32-32H400c17.7 0 32 14.3 32 32z'/%3E%3C/svg%3E");
 }
 
 .faq-item p {
@@ -1714,7 +1739,8 @@ a {
     margin-bottom: 0.75rem;
 }
 
-.footer-contact i {
+.footer-contact i,
+.footer-contact .icon {
     color: var(--burnt-orange);
     margin-top: 0.25rem;
     flex-shrink: 0;
@@ -1739,7 +1765,8 @@ a {
     letter-spacing: 0.03em;
 }
 
-.footer-texas i {
+.footer-texas i,
+.footer-texas .icon {
     color: var(--burnt-orange);
     font-size: 0.7rem;
 }
@@ -1757,12 +1784,14 @@ a {
     color: #e2e8f0;
 }
 
-.footer-bless i {
+.footer-bless i,
+.footer-bless .icon {
     color: var(--burnt-orange);
     font-size: 0.85rem;
 }
 
-.footer-bless i:last-child {
+.footer-bless i:last-child,
+.footer-bless .icon:last-child {
     color: var(--accent-gold);
     font-size: 0.7rem;
 }

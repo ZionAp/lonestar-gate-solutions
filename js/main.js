@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!submitBtn || submitBtn.disabled) return;
 
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Request Sent!';
+            submitBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Request Sent!';
             submitBtn.disabled = true;
             submitBtn.classList.add('is-success');
             setFormStatus('', '');

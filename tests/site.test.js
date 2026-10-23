@@ -76,6 +76,13 @@ async function main() {
     assert.strictEqual(preload.getAttribute('fetchpriority'), 'high');
   });
 
+  check('icons are inlined with no external icon CDN', () => {
+    assert.strictEqual(d.querySelectorAll('i.fa, i.fas, i.fab, i.far').length, 0, 'legacy <i> icon tags remain');
+    assert.ok(d.querySelectorAll('svg.icon use[href^="#icon-"]').length > 0, 'no inlined icon references');
+    assert.ok(d.querySelector('.icon-sprite symbol'), 'missing sprite symbols');
+    assert.strictEqual(d.querySelectorAll('link[href*="font-awesome"]').length, 0, 'Font Awesome CDN still linked');
+  });
+
   check('veteran-owned messaging is present', () => {
     const text = d.body.textContent;
     assert.match(text, /Veteran[\s-]?Owned/i, 'missing veteran-owned text');

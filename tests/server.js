@@ -34,10 +34,10 @@ const securityHeaders = {
     "base-uri 'self'",
     "object-src 'none'",
     "script-src 'self'",
-    "style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
-    "font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com data:",
+    "style-src 'self' https://fonts.googleapis.com",
+    "font-src https://fonts.gstatic.com data:",
     "img-src 'self' data:",
-    "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com",
+    "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
     "form-action 'self'",
     "frame-ancestors 'none'"
   ].join('; ')
