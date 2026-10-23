@@ -27,11 +27,10 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preload critical assets -->
+    <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin.woff2" crossorigin>
     <link rel="preload" as="image" href="images/gallery/IMG-20261021-WA0047-thumb.jpg" fetchpriority="high">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -144,7 +143,7 @@
     </script>
 </head>
 <body>
-    <svg class="icon-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
         <defs>
         <symbol id="icon-arrow-right" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></symbol>
         <symbol id="icon-arrows-left-right" viewBox="0 0 512 512"><path d="M406.6 374.6l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224l-293.5 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288l293.5 0-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"/></symbol>
@@ -183,19 +182,19 @@
     <header class="header">
         <div class="texas-ribbon" aria-hidden="true">
             <span class="texas-ribbon-blue"></span>
-            <span class="texas-ribbon-star"><svg class="icon"><use href="#icon-star"></use></svg></span>
+            <span class="texas-ribbon-star"><svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg></span>
             <span class="texas-ribbon-red"></span>
         </div>
         <div class="top-bar">
             <div class="container">
                 <div class="top-bar-content">
                 <div class="top-bar-left">
-                    <span><svg class="icon"><use href="#icon-star"></use></svg> Deep in the Heart of Texas</span>
-                    <span><svg class="icon"><use href="#icon-map-marker-alt"></use></svg> Serving Austin, TX &amp; Surrounding Areas</span>
-                    <span><svg class="icon"><use href="#icon-clock"></use></svg> Mon-Fri 8AM-6PM | 24/7 Emergency Service</span>
+                    <span><svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg> Deep in the Heart of Texas</span>
+                    <span><svg class="icon" aria-hidden="true"><use href="#icon-map-marker-alt"></use></svg> Serving Austin, TX &amp; Surrounding Areas</span>
+                    <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg> Mon-Fri 8AM-6PM | 24/7 Emergency Service</span>
                 </div>
                 <div class="top-bar-right">
-                    <a href="tel:+15125550192"><svg class="icon"><use href="#icon-phone"></use></svg> (512)&nbsp;555&#8209;0192</a>
+                    <a href="tel:+15125550192"><svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg> (512)&nbsp;555&#8209;0192</a>
                 </div>
                 </div>
             </div>
@@ -237,7 +236,7 @@
                         <li><a href="#faqs" class="nav-link">FAQ</a></li>
                         <li><a href="#about" class="nav-link">About</a></li>
                         <li><a href="#contact" class="nav-link">Contact</a></li>
-                        <li class="nav-cta"><a href="tel:+15125550192" class="btn btn-primary"><svg class="icon"><use href="#icon-phone"></use></svg> Call&nbsp;Now</a></li>
+                        <li class="nav-cta"><a href="tel:+15125550192" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg> Call&nbsp;Now</a></li>
                     </ul>
                 </div>
             </div>
@@ -248,15 +247,15 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
-            <div class="hero-slide is-active" style="background-image:url('images/gallery/IMG-20261021-WA0047-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0026-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0028-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0035-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0052-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0056-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0057-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0059-thumb.jpg')"></div>
-            <div class="hero-slide" style="background-image:url('images/gallery/IMG-20261021-WA0060-thumb.jpg')"></div>
+            <div class="hero-slide hero-slide--1 is-active" data-slide="1"></div>
+            <div class="hero-slide" data-slide="2"></div>
+            <div class="hero-slide" data-slide="3"></div>
+            <div class="hero-slide" data-slide="4"></div>
+            <div class="hero-slide" data-slide="5"></div>
+            <div class="hero-slide" data-slide="6"></div>
+            <div class="hero-slide" data-slide="7"></div>
+            <div class="hero-slide" data-slide="8"></div>
+            <div class="hero-slide" data-slide="9"></div>
         </div>
         <div class="hero-bg"></div>
         <div class="container">
@@ -267,32 +266,32 @@
 
                     <div class="hero-cta">
                         <a href="tel:+15125550192" class="btn btn-primary btn-large">
-                            <svg class="icon"><use href="#icon-phone"></use></svg> Call&nbsp;(512)&nbsp;555&#8209;0192
+                            <svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg> Call&nbsp;(512)&nbsp;555&#8209;0192
                         </a>
                         <a href="#contact" class="btn btn-secondary btn-large">
-                            <svg class="icon"><use href="#icon-clipboard-list"></use></svg> Free Quote
+                            <svg class="icon" aria-hidden="true"><use href="#icon-clipboard-list"></use></svg> Free Quote
                         </a>
                     </div>
 
                     <div class="hero-trust">
                         <div class="trust-item">
-                            <svg class="icon"><use href="#icon-flag-usa"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-flag-usa"></use></svg>
                             <span>Veteran Owned &amp; Operated</span>
                         </div>
                         <div class="trust-item">
-                            <svg class="icon"><use href="#icon-shield-alt"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-shield-alt"></use></svg>
                             <span>Licensed &amp; Insured</span>
                         </div>
                         <div class="trust-item">
-                            <svg class="icon"><use href="#icon-award"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-award"></use></svg>
                             <span>1 Year Labor Warranty</span>
                         </div>
                         <div class="trust-item">
-                            <svg class="icon"><use href="#icon-clock"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg>
                             <span>Same-Day Service Available</span>
                         </div>
                         <div class="trust-item">
-                            <svg class="icon"><use href="#icon-star"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
                             <span>Texas Proud Since Day One</span>
                         </div>
                     </div>
@@ -310,7 +309,7 @@
         <div class="container">
             <p class="patriot-text">
                 <span class="patriot-line">God Bless America</span>
-                <span class="patriot-star" aria-hidden="true"><svg class="icon"><use href="#icon-star"></use></svg></span>
+                <span class="patriot-star" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg></span>
                 <span class="patriot-line">God Bless Texas</span>
             </p>
         </div>
@@ -327,59 +326,59 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg class="icon"><use href="#icon-hammer"></use></svg>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-hammer"></use></svg>
                     </div>
                     <h3>Gate Installation</h3>
                     <p>Custom driveway gates in wrought iron, steel, aluminum. Swing, slide &amp; cantilever options for any property.</p>
                     <ul class="service-features">
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Custom Design</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> All Materials</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Professional Install</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Custom Design</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> All Materials</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Professional Install</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg class="icon"><use href="#icon-tools"></use></svg>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg>
                     </div>
                     <h3>Gate Repair</h3>
                     <p>Fast, reliable repair for all automatic gates. Motors, hinges, tracks, and electrical issues fixed same-day.</p>
                     <ul class="service-features">
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Same-Day Service</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> All Brands</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Emergency Repairs</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Same-Day Service</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> All Brands</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Emergency Repairs</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg class="icon"><use href="#icon-key"></use></svg>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-key"></use></svg>
                     </div>
                     <h3>Access Control</h3>
                     <p>Keypads, intercoms, remote controls, smartphone access, and vehicle detection systems.</p>
                     <ul class="service-features">
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Keypad Systems</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Video Intercoms</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> App Control</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Keypad Systems</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Video Intercoms</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> App Control</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <svg class="icon"><use href="#icon-fire"></use></svg>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-fire"></use></svg>
                     </div>
                     <h3>Welding &amp; Fabrication</h3>
                     <p>On-site welding repairs, custom gate fabrication, structural repairs, and mobile welding services.</p>
                     <ul class="service-features">
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Mobile Welding</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Custom Fabrication</li>
-                        <li><svg class="icon"><use href="#icon-check"></use></svg> Repair Services</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Mobile Welding</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Custom Fabrication</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Repair Services</li>
                     </ul>
                 </div>
             </div>
 
             <div class="services-cta">
-                <a href="#services" class="btn btn-primary">View All Services <svg class="icon"><use href="#icon-arrow-right"></use></svg></a>
+                <a href="#services" class="btn btn-primary">View All Services <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
             </div>
         </div>
     </section>
@@ -395,7 +394,7 @@
             <div class="services-detailed">
                 <div class="service-detail">
                     <div class="service-detail-content">
-                        <h3><svg class="icon"><use href="#icon-hammer"></use></svg> Gate Installation</h3>
+                        <h3><svg class="icon" aria-hidden="true"><use href="#icon-hammer"></use></svg> Gate Installation</h3>
                         <p>Transform your property with a custom automatic driveway gate. We design and install gates that enhance security, curb appeal, and property value.</p>
                         <div class="service-detail-grid">
                             <div class="service-detail-item">
@@ -413,7 +412,7 @@
 
                 <div class="service-detail">
                     <div class="service-detail-content">
-                        <h3><svg class="icon"><use href="#icon-wrench"></use></svg> Gate Repair &amp; Service</h3>
+                        <h3><svg class="icon" aria-hidden="true"><use href="#icon-wrench"></use></svg> Gate Repair &amp; Service</h3>
                         <p>Don't let a broken gate leave you stranded. Our expert technicians diagnose and repair all gate issues quickly and affordably.</p>
                         <div class="service-detail-grid">
                             <div class="service-detail-item">
@@ -431,7 +430,7 @@
 
                 <div class="service-detail">
                     <div class="service-detail-content">
-                        <h3><svg class="icon"><use href="#icon-cart-shopping"></use></svg> Gate Sales &amp; Equipment</h3>
+                        <h3><svg class="icon" aria-hidden="true"><use href="#icon-cart-shopping"></use></svg> Gate Sales &amp; Equipment</h3>
                         <p>Quality gate operators, access control equipment, and replacement parts. We sell and install the industry's top brands at competitive prices.</p>
                         <div class="service-detail-grid">
                             <div class="service-detail-item">
@@ -449,7 +448,7 @@
 
                 <div class="service-detail">
                     <div class="service-detail-content">
-                        <h3><svg class="icon"><use href="#icon-fire"></use></svg> Welding &amp; Custom Fabrication</h3>
+                        <h3><svg class="icon" aria-hidden="true"><use href="#icon-fire"></use></svg> Welding &amp; Custom Fabrication</h3>
                         <p>Mobile welding services for gate repairs, custom brackets, structural reinforcement, and new metal fabrication projects.</p>
                         <div class="service-detail-grid">
                             <div class="service-detail-item">
@@ -516,28 +515,28 @@
 
             <div class="areas-content">
                 <div class="areas-list">
-                    <h3><svg class="icon"><use href="#icon-map-marker-alt"></use></svg> Cities We Serve</h3>
+                    <h3><svg class="icon" aria-hidden="true"><use href="#icon-map-marker-alt"></use></svg> Cities We Serve</h3>
                     <div class="areas-grid" id="areasGrid">
-                        <button type="button" class="area-item is-active" data-city="Austin" data-blurb="Where the Lone Star shines brightest - our home base and the heart of everything we do.">Austin</button>
-                        <button type="button" class="area-item" data-city="Round Rock" data-blurb="Home of the Express and some of the friendliest folks in the Hill Country - y'all know who you are.">Round Rock</button>
-                        <button type="button" class="area-item" data-city="Cedar Park" data-blurb="Cedar Park strong - Texas-sized neighborhoods that deserve gates built to last.">Cedar Park</button>
-                        <button type="button" class="area-item" data-city="Pflugerville" data-blurb="Pflugerville - 'Pfabulous' by name, and we keep those gates moving pfefficiently.">Pflugerville</button>
-                        <button type="button" class="area-item" data-city="Georgetown" data-blurb="More than just a pretty square - Georgetown's historic charm meets our Texas-built craftsmanship.">Georgetown</button>
-                        <button type="button" class="area-item" data-city="Leander" data-blurb="Out where the stars at night are big and bright, we install gates that stand up to Texas weather.">Leander</button>
-                        <button type="button" class="area-item" data-city="Lakeway" data-blurb="On the shores of Lake Travis - gates worthy of a Texas Hill Country sunset.">Lakeway</button>
-                        <button type="button" class="area-item" data-city="Bee Cave" data-blurb="Bee Cave, where the hills roll and the gates roll smoother - built Texas tough.">Bee Cave</button>
-                        <button type="button" class="area-item" data-city="Westlake Hills" data-blurb="Westlake Hills knows fine craftsmanship - and so do we, Lone Star style.">Westlake Hills</button>
-                        <button type="button" class="area-item" data-city="Dripping Springs" data-blurb="The Gateway to the Hill Country - and to a driveway gate that turns heads.">Dripping Springs</button>
-                        <button type="button" class="area-item" data-city="Spicewood" data-blurb="Spicewood - a little off the beaten path, just how Texas is meant to be. We'll find ya.">Spicewood</button>
-                        <button type="button" class="area-item" data-city="Buda" data-blurb="The 'Outdoor Capital of Texas' - we build gates as rugged as the land around it.">Buda</button>
-                        <button type="button" class="area-item" data-city="Kyle" data-blurb="Kyle, home of pie - and now home to premium gate service served up Texas-style.">Kyle</button>
-                        <button type="button" class="area-item" data-city="Hutto" data-blurb="Hutto - a small town with a big Texas heart, and gates to match.">Hutto</button>
-                        <button type="button" class="area-item" data-city="Manor" data-blurb="Manor - where the blackland prairie meets Texas craftsmanship you can count on.">Manor</button>
-                        <button type="button" class="area-item" data-city="Lago Vista" data-blurb="Lago Vista - lake living at its finest, with gates built deep in the heart of Texas.">Lago Vista</button>
-                        <button type="button" class="area-item" data-city="Wimberley" data-blurb="Wimberley - Hill Country charm, cypress trees, and gates built Texas proud.">Wimberley</button>
-                        <button type="button" class="area-item" data-city="Driftwood" data-blurb="Driftwood - big Texas skies, wide-open ranches, and gates that hold the line.">Driftwood</button>
-                        <button type="button" class="area-item" data-city="Del Valle" data-blurb="Del Valle - down in the Colorado River bottoms, we keep things running boot-scootin' smooth.">Del Valle</button>
-                        <button type="button" class="area-item" data-city="Jollyville" data-blurb="Jollyville - a little slice of old Texas, and we're jolly proud to serve it.">Jollyville</button>
+                        <button type="button" aria-pressed="true" class="area-item is-active" data-city="Austin" data-blurb="Where the Lone Star shines brightest - our home base and the heart of everything we do.">Austin</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Round Rock" data-blurb="Home of the Express and some of the friendliest folks in the Hill Country - y'all know who you are.">Round Rock</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Cedar Park" data-blurb="Cedar Park strong - Texas-sized neighborhoods that deserve gates built to last.">Cedar Park</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Pflugerville" data-blurb="Pflugerville - 'Pfabulous' by name, and we keep those gates moving pfefficiently.">Pflugerville</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Georgetown" data-blurb="More than just a pretty square - Georgetown's historic charm meets our Texas-built craftsmanship.">Georgetown</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Leander" data-blurb="Out where the stars at night are big and bright, we install gates that stand up to Texas weather.">Leander</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Lakeway" data-blurb="On the shores of Lake Travis - gates worthy of a Texas Hill Country sunset.">Lakeway</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Bee Cave" data-blurb="Bee Cave, where the hills roll and the gates roll smoother - built Texas tough.">Bee Cave</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Westlake Hills" data-blurb="Westlake Hills knows fine craftsmanship - and so do we, Lone Star style.">Westlake Hills</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Dripping Springs" data-blurb="The Gateway to the Hill Country - and to a driveway gate that turns heads.">Dripping Springs</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Spicewood" data-blurb="Spicewood - a little off the beaten path, just how Texas is meant to be. We'll find ya.">Spicewood</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Buda" data-blurb="The 'Outdoor Capital of Texas' - we build gates as rugged as the land around it.">Buda</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Kyle" data-blurb="Kyle, home of pie - and now home to premium gate service served up Texas-style.">Kyle</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Hutto" data-blurb="Hutto - a small town with a big Texas heart, and gates to match.">Hutto</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Manor" data-blurb="Manor - where the blackland prairie meets Texas craftsmanship you can count on.">Manor</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Lago Vista" data-blurb="Lago Vista - lake living at its finest, with gates built deep in the heart of Texas.">Lago Vista</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Wimberley" data-blurb="Wimberley - Hill Country charm, cypress trees, and gates built Texas proud.">Wimberley</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Driftwood" data-blurb="Driftwood - big Texas skies, wide-open ranches, and gates that hold the line.">Driftwood</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Del Valle" data-blurb="Del Valle - down in the Colorado River bottoms, we keep things running boot-scootin' smooth.">Del Valle</button>
+                        <button type="button" aria-pressed="false" class="area-item" data-city="Jollyville" data-blurb="Jollyville - a little slice of old Texas, and we're jolly proud to serve it.">Jollyville</button>
                     </div>
                     <p class="areas-note">Don't see your city listed? <a href="#contact">Contact us</a> - we may still be able to serve your area!</p>
                 </div>
@@ -550,7 +549,7 @@
                         </svg>
                         <h4 id="areaTitle">Austin Metro Coverage</h4>
                         <p class="area-starline"><svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg> Deep in the heart of Texas <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg></p>
-                        <p class="area-blurb" id="areaBlurb">Where the Lone Star shines brightest - our home base and the heart of everything we do.</p>
+                        <p class="area-blurb" id="areaBlurb" aria-live="polite">Where the Lone Star shines brightest - our home base and the heart of everything we do.</p>
                     </div>
                 </div>
             </div>
@@ -569,55 +568,82 @@
                 <div class="gallery-track" id="galleryTrack" tabindex="0" role="group" aria-label="Project photo gallery, scroll to see more">
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0026.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0026-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Custom gate installation project in Austin, TX">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0026-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0026-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Custom gate installation project in Austin, TX">
+                            </picture>
                         </a>
                         <figcaption>Custom Gate Installation</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0028.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0028-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Automatic driveway gate project in Austin, TX">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0028-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0028-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Automatic driveway gate project in Austin, TX">
+                            </picture>
                         </a>
                         <figcaption>Automatic Driveway Gate</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0035.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0035-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Custom welding and fabrication work in Austin, TX">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0035-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0035-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Custom welding and fabrication work in Austin, TX">
+                            </picture>
                         </a>
                         <figcaption>Welding &amp; Fabrication</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0047.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0047-thumb.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gate installation work by LoneStar Gate Solutions">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0047-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0047-thumb.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Gate installation work by LoneStar Gate Solutions">
+                            </picture>
                         </a>
                         <figcaption>Gate Installation</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0052.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0052-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Access control and gate operator work in Austin, TX">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0052-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0052-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Access control and gate operator work in Austin, TX">
+                            </picture>
                         </a>
                         <figcaption>Access Control &amp; Operators</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0056.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0056-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Custom gate project in the Austin area">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0056-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0056-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Custom gate project in the Austin area">
+                            </picture>
                         </a>
                         <figcaption>Custom Gate Project</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0057.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0057-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Gate repair service in Austin, TX">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0057-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0057-thumb.jpg" width="450" height="800" loading="lazy" decoding="async" alt="Gate repair service in Austin, TX">
+                            </picture>
                         </a>
                         <figcaption>Gate Repair Service</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0059.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0059-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Completed gate installation in Central Texas">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0059-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0059-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Completed gate installation in Central Texas">
+                            </picture>
                         </a>
                         <figcaption>Completed Installation</figcaption>
                     </figure>
                     <figure class="gallery-item">
                         <a href="images/gallery/IMG-20261021-WA0060.jpg" class="gallery-link" target="_blank" rel="noopener">
-                            <img src="images/gallery/IMG-20261021-WA0060-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gate and welding project by LoneStar Gate Solutions">
+                            <picture>
+                                <source srcset="images/gallery/IMG-20261021-WA0060-thumb.webp" type="image/webp">
+                                <img src="images/gallery/IMG-20261021-WA0060-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gate and welding project by LoneStar Gate Solutions">
+                            </picture>
                         </a>
                         <figcaption>Gate &amp; Welding Work</figcaption>
                     </figure>
@@ -639,10 +665,22 @@
             <div class="about-content">
             <div class="about-text">
                 <div class="about-slideshow" id="aboutSlideshow" role="img" aria-label="LoneStar Gate Solutions project photos">
-                    <img class="about-slide is-active" src="images/gallery/IMG-20261021-WA0059-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="LoneStar Gate Solutions completed gate installation in Austin, TX">
-                    <img class="about-slide" src="images/gallery/IMG-20261021-WA0056-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Custom gate project by LoneStar Gate Solutions in Austin, TX">
-                    <img class="about-slide" src="images/gallery/IMG-20261021-WA0028-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Automatic driveway gate by LoneStar Gate Solutions in Austin, TX">
-                    <img class="about-slide" src="images/gallery/IMG-20261021-WA0060-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gate and welding project by LoneStar Gate Solutions">
+                    <picture>
+                        <source srcset="images/gallery/IMG-20261021-WA0059-thumb.webp" type="image/webp">
+                        <img class="about-slide is-active" src="images/gallery/IMG-20261021-WA0059-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="LoneStar Gate Solutions completed gate installation in Austin, TX">
+                    </picture>
+                    <picture>
+                        <source srcset="images/gallery/IMG-20261021-WA0056-thumb.webp" type="image/webp">
+                        <img class="about-slide" src="images/gallery/IMG-20261021-WA0056-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Custom gate project by LoneStar Gate Solutions in Austin, TX">
+                    </picture>
+                    <picture>
+                        <source srcset="images/gallery/IMG-20261021-WA0028-thumb.webp" type="image/webp">
+                        <img class="about-slide" src="images/gallery/IMG-20261021-WA0028-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Automatic driveway gate by LoneStar Gate Solutions in Austin, TX">
+                    </picture>
+                    <picture>
+                        <source srcset="images/gallery/IMG-20261021-WA0060-thumb.webp" type="image/webp">
+                        <img class="about-slide" src="images/gallery/IMG-20261021-WA0060-thumb.jpg" width="600" height="800" loading="lazy" decoding="async" alt="Gate and welding project by LoneStar Gate Solutions">
+                    </picture>
                 </div>
                 <h2 class="section-title">About LoneStar Gate Solutions</h2>
                 <p class="about-lead">Veteran-owned and Austin's trusted partner for premium gate solutions. We combine Texas craftsmanship with reliable service to deliver gates that stand the test of time.</p>
@@ -653,7 +691,7 @@
                 <div class="about-features">
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg class="icon"><use href="#icon-award"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-award"></use></svg>
                         </div>
                         <div class="about-feature-content">
                             <h4>Quality Craftsmanship</h4>
@@ -662,7 +700,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg class="icon"><use href="#icon-shield-alt"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-shield-alt"></use></svg>
                         </div>
                         <div class="about-feature-content">
                             <h4>Warranty Protection</h4>
@@ -671,7 +709,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg class="icon"><use href="#icon-bolt"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-bolt"></use></svg>
                         </div>
                         <div class="about-feature-content">
                             <h4>Fast Response</h4>
@@ -680,7 +718,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg class="icon"><use href="#icon-certificate"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-certificate"></use></svg>
                         </div>
                         <div class="about-feature-content">
                             <h4>Licensed &amp; Insured</h4>
@@ -689,7 +727,7 @@
                     </div>
                     <div class="about-feature">
                         <div class="about-feature-icon">
-                            <svg class="icon"><use href="#icon-flag-usa"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-flag-usa"></use></svg>
                         </div>
                         <div class="about-feature-content">
                             <h4>Veteran Owned &amp; Operated</h4>
@@ -822,10 +860,10 @@
                 <p class="cta-tagline">Texas-built. Texas-proud. Serving the heart of the Hill Country.</p>
                 <div class="cta-buttons">
                     <a href="tel:+15125550192" class="btn btn-primary btn-large">
-                        <svg class="icon"><use href="#icon-phone"></use></svg> Call&nbsp;(512)&nbsp;555&#8209;0192
+                        <svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg> Call&nbsp;(512)&nbsp;555&#8209;0192
                     </a>
                     <a href="#contact" class="btn btn-secondary btn-large">
-                        <svg class="icon"><use href="#icon-clipboard-list"></use></svg> Request Quote
+                        <svg class="icon" aria-hidden="true"><use href="#icon-clipboard-list"></use></svg> Request Quote
                     </a>
                 </div>
             </div>
@@ -845,7 +883,7 @@
                     <h3>Contact Information</h3>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg class="icon"><use href="#icon-phone"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg>
                         </div>
                         <div class="contact-details">
                             <strong>Phone</strong>
@@ -854,7 +892,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg class="icon"><use href="#icon-envelope"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg>
                         </div>
                         <div class="contact-details">
                             <strong>Email</strong>
@@ -863,7 +901,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg class="icon"><use href="#icon-map-marker-alt"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-map-marker-alt"></use></svg>
                         </div>
                         <div class="contact-details">
                             <strong>Service Area</strong>
@@ -872,7 +910,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg class="icon"><use href="#icon-clock"></use></svg>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg>
                         </div>
                         <div class="contact-details">
                             <strong>Business Hours</strong>
@@ -958,9 +996,9 @@
                     </div>
                     <p>Veteran-owned Austin gate installation, repair, sales &amp; welding company. Quality craftsmanship, reliable service.</p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/lonestargatesolutions" target="_blank" rel="noopener noreferrer" aria-label="LoneStar Gate Solutions on Facebook"><svg class="icon"><use href="#icon-facebook"></use></svg></a>
-                        <a href="https://www.instagram.com/lonestargatesolutions" target="_blank" rel="noopener noreferrer" aria-label="LoneStar Gate Solutions on Instagram"><svg class="icon"><use href="#icon-instagram"></use></svg></a>
-                        <a href="https://www.google.com/maps/place/LoneStar+Gate+Solutions" target="_blank" rel="noopener noreferrer" aria-label="LoneStar Gate Solutions on Google"><svg class="icon"><use href="#icon-google"></use></svg></a>
+                        <a href="https://www.facebook.com/lonestargatesolutions" target="_blank" rel="noopener noreferrer" aria-label="LoneStar Gate Solutions on Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
+                        <a href="https://www.instagram.com/lonestargatesolutions" target="_blank" rel="noopener noreferrer" aria-label="LoneStar Gate Solutions on Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
+                        <a href="https://www.google.com/maps/place/LoneStar+Gate+Solutions" target="_blank" rel="noopener noreferrer" aria-label="LoneStar Gate Solutions on Google"><svg class="icon" aria-hidden="true"><use href="#icon-google"></use></svg></a>
                     </div>
                 </div>
 
@@ -989,10 +1027,10 @@
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <ul class="footer-contact">
-                        <li><svg class="icon"><use href="#icon-phone"></use></svg> <a href="tel:+15125550192">(512)&nbsp;555&#8209;0192</a></li>
-                        <li><svg class="icon"><use href="#icon-envelope"></use></svg> <a href="mailto:info@lonestargatesolutions.com">info@lonestargatesolutions.com</a></li>
-                        <li><svg class="icon"><use href="#icon-map-marker-alt"></use></svg> Austin, TX &amp; Surrounding Areas</li>
-                        <li><svg class="icon"><use href="#icon-clock"></use></svg> Mon-Fri 8AM-6PM | Sat 9AM-4PM</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg> <a href="tel:+15125550192">(512)&nbsp;555&#8209;0192</a></li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg> <a href="mailto:info@lonestargatesolutions.com">info@lonestargatesolutions.com</a></li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-map-marker-alt"></use></svg> Austin, TX &amp; Surrounding Areas</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg> Mon-Fri 8AM-6PM | Sat 9AM-4PM</li>
                     </ul>
                 </div>
             </div>

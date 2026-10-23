@@ -18,11 +18,12 @@ const types = {
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
   '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml; charset=utf-8'
+  '.xml': 'application/xml; charset=utf-8',
+  '.woff2': 'font/woff2'
 };
 
 const publicFiles = new Set(['index.html', 'favicon.ico', 'robots.txt', 'sitemap.xml']);
-const publicDirs = new Set(['css', 'js', 'images']);
+const publicDirs = new Set(['css', 'js', 'images', 'fonts']);
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',
@@ -34,10 +35,10 @@ const securityHeaders = {
     "base-uri 'self'",
     "object-src 'none'",
     "script-src 'self'",
-    "style-src 'self' https://fonts.googleapis.com",
-    "font-src https://fonts.gstatic.com data:",
+    "style-src 'self'",
+    "font-src 'self' data:",
     "img-src 'self' data:",
-    "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
+    "connect-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'none'"
   ].join('; ')
@@ -133,11 +134,18 @@ async function handleRequest(req, res) {
     return respond(res, 404, 'Not Found\n');
   }
 
+  const ext = path.extname(filePath);
+  const cacheControl = ext === '.html'
+    ? 'no-cache'
+    : (['.woff2', '.jpg', '.jpeg', '.png', '.webp', '.ico', '.svg'].includes(ext)
+      ? 'public, max-age=31536000, immutable'
+      : 'public, max-age=604800');
+
   res.writeHead(200, {
     ...securityHeaders,
-    'Content-Type': types[path.extname(filePath)],
+    'Content-Type': types[ext],
     'Content-Length': data.length,
-    'Cache-Control': 'no-cache'
+    'Cache-Control': cacheControl
   });
   res.end(data);
 }

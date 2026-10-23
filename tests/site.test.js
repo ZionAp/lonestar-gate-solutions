@@ -76,6 +76,53 @@ async function main() {
     assert.strictEqual(preload.getAttribute('fetchpriority'), 'high');
   });
 
+  check('images use WebP with JPEG fallback via <picture>', () => {
+    const pics = d.querySelectorAll('picture');
+    assert.ok(pics.length >= 13, 'expected gallery/about pictures, got ' + pics.length);
+    pics.forEach(pic => {
+      const source = pic.querySelector('source[type="image/webp"]');
+      const img = pic.querySelector('img');
+      assert.ok(source, 'picture missing webp source');
+      assert.match(source.getAttribute('srcset'), /\.webp$/, 'source not webp');
+      assert.ok(img && /\.jpg$/.test(img.getAttribute('src')), 'picture missing jpg fallback img');
+    });
+    [
+      'IMG-20261021-WA0026-thumb.webp', 'IMG-20261021-WA0028-thumb.webp',
+      'IMG-20261021-WA0035-thumb.webp', 'IMG-20261021-WA0047-thumb.webp',
+      'IMG-20261021-WA0052-thumb.webp', 'IMG-20261021-WA0056-thumb.webp',
+      'IMG-20261021-WA0057-thumb.webp', 'IMG-20261021-WA0059-thumb.webp',
+      'IMG-20261021-WA0060-thumb.webp'
+    ].forEach(f => assert.ok(fs.existsSync(path.join(siteRoot, 'images', 'gallery', f)), 'missing ' + f));
+  });
+
+  check('hero backgrounds are deferred until needed', () => {
+    const slides = d.querySelectorAll('.hero-slide');
+    assert.ok(slides.length >= 3, 'expected hero slides');
+    assert.ok(slides[0].classList.contains('hero-slide--1'), 'first hero slide should render immediately');
+    for (let i = 0; i < slides.length; i++) {
+      assert.strictEqual(slides[i].dataset.slide, String(i + 1), 'hero slide missing data-slide');
+    }
+    // Slide 2 is preloaded one step ahead; the rest must not load up front.
+    for (let i = 2; i < slides.length; i++) {
+      assert.ok(!/hero-slide--\d/.test(slides[i].className), 'hero slide ' + (i + 1) + ' loads eagerly');
+    }
+  });
+
+  check('fonts are self-hosted (no Google Fonts CDN)', () => {
+    assert.strictEqual(d.querySelectorAll('link[href*="fonts.googleapis.com"]').length, 0, 'Google Fonts link remains');
+    assert.strictEqual(d.querySelectorAll('link[href*="fonts.gstatic.com"]').length, 0, 'Google Fonts preconnect remains');
+    const preloads = d.querySelectorAll('link[rel="preload"][as="font"]');
+    assert.ok(preloads.length >= 2, 'expected font preloads');
+    preloads.forEach(l => {
+      assert.match(l.getAttribute('href'), /^fonts\/.*\.woff2$/, 'font preload not local: ' + l.getAttribute('href'));
+      assert.strictEqual(l.getAttribute('type'), 'font/woff2');
+    });
+    ['inter-latin.woff2', 'inter-latin-ext.woff2', 'plus-jakarta-sans-latin.woff2', 'plus-jakarta-sans-latin-ext.woff2'].forEach(f => {
+      assert.ok(fs.existsSync(path.join(siteRoot, 'fonts', f)), 'missing font file ' + f);
+    });
+    assert.strictEqual(d.querySelectorAll('#main [style], .hero-slide[style]').length, 0, 'inline style attribute blocks CSP');
+  });
+
   check('icons are inlined with no external icon CDN', () => {
     assert.strictEqual(d.querySelectorAll('i.fa, i.fas, i.fab, i.far').length, 0, 'legacy <i> icon tags remain');
     assert.ok(d.querySelectorAll('svg.icon use[href^="#icon-"]').length > 0, 'no inlined icon references');
@@ -185,7 +232,22 @@ async function main() {
     assert.strictEqual(areaTitle.textContent, 'Lakeway Coverage');
     assert.match(areaBlurb.textContent, /Lake Travis/);
     assert.ok(lakeway.classList.contains('is-active'));
+    assert.strictEqual(lakeway.getAttribute('aria-pressed'), 'true');
     assert.ok(!d.querySelector('.area-item[data-city="Austin"]').classList.contains('is-active'));
+    assert.strictEqual(d.querySelector('.area-item[data-city="Austin"]').getAttribute('aria-pressed'), 'false');
+  });
+
+  check('decorative icons are hidden from assistive tech', () => {
+    d.querySelectorAll('svg.icon').forEach(svg => {
+      assert.strictEqual(svg.getAttribute('aria-hidden'), 'true', 'icon not aria-hidden');
+    });
+  });
+
+  check('every button has an accessible name', () => {
+    d.querySelectorAll('button').forEach(btn => {
+      const name = (btn.getAttribute('aria-label') || btn.textContent || '').trim();
+      assert.ok(name.length > 0, 'button missing accessible name');
+    });
   });
 
   check('no runtime errors during load/interaction', () => {

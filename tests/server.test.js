@@ -88,6 +88,36 @@ try {
     assert.equal(icon.status, 200);
   });
 
+  await check('serves self-hosted fonts with correct type', async () => {
+    const res = await request(port, '/fonts/inter-latin.woff2');
+    assert.equal(res.status, 200);
+    assert.match(res.headers['content-type'], /^font\/woff2/);
+    assert.ok(Number(res.headers['content-length']) > 0);
+  });
+
+  await check('CSP no longer allows external font/style origins', async () => {
+    const res = await request(port, '/');
+    const csp = res.headers['content-security-policy'];
+    assert.doesNotMatch(csp, /fonts\.googleapis\.com/);
+    assert.doesNotMatch(csp, /fonts\.gstatic\.com/);
+    assert.doesNotMatch(csp, /cdnjs\.cloudflare\.com/);
+    assert.match(csp, /font-src 'self' data:/);
+  });
+
+  await check('sets sensible cache headers', async () => {
+    const html = await request(port, '/');
+    assert.match(html.headers['cache-control'], /no-cache/);
+
+    const woff = await request(port, '/fonts/inter-latin.woff2');
+    assert.match(woff.headers['cache-control'], /immutable/);
+
+    const img = await request(port, '/images/gallery/IMG-20261021-WA0047-thumb.webp');
+    assert.match(img.headers['cache-control'], /immutable/);
+
+    const css = await request(port, '/css/style.css');
+    assert.match(css.headers['cache-control'], /max-age=604800/);
+  });
+
   await check('returns 404 for missing files', async () => {
     const res = await request(port, '/does-not-exist.html');
     assert.equal(res.status, 404);

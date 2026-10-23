@@ -1,6 +1,43 @@
 /* LoneStar Gate Solutions - Austin TX Gate Services Website */
 /* Design: Best of both worlds - clean service style + premium industrial look */
 
+/* Self-hosted variable fonts (Inter, Plus Jakarta Sans) */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/inter-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 600 800;
+    font-display: swap;
+    src: url('../fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 600 800;
+    font-display: swap;
+    src: url('../fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
     --primary-charcoal: #101820;
     --secondary-charcoal: #1a1f24;
@@ -90,7 +127,10 @@
 }
 
 .icon-sprite {
-    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 html {
@@ -431,6 +471,16 @@ a {
     transition: opacity 1.2s ease, transform 6s ease;
     will-change: opacity, transform;
 }
+
+.hero-slide--1 { background-image: url('../images/gallery/IMG-20261021-WA0047-thumb.jpg'); }
+.hero-slide--2 { background-image: url('../images/gallery/IMG-20261021-WA0026-thumb.jpg'); }
+.hero-slide--3 { background-image: url('../images/gallery/IMG-20261021-WA0028-thumb.jpg'); }
+.hero-slide--4 { background-image: url('../images/gallery/IMG-20261021-WA0035-thumb.jpg'); }
+.hero-slide--5 { background-image: url('../images/gallery/IMG-20261021-WA0052-thumb.jpg'); }
+.hero-slide--6 { background-image: url('../images/gallery/IMG-20261021-WA0056-thumb.jpg'); }
+.hero-slide--7 { background-image: url('../images/gallery/IMG-20261021-WA0057-thumb.jpg'); }
+.hero-slide--8 { background-image: url('../images/gallery/IMG-20261021-WA0059-thumb.jpg'); }
+.hero-slide--9 { background-image: url('../images/gallery/IMG-20261021-WA0060-thumb.jpg'); }
 
 .hero-slide.is-active {
     opacity: 1;
@@ -954,6 +1004,11 @@ a {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+.gallery-link picture,
+.about-slideshow picture {
+    display: contents;
 }
 
 .gallery-item img {

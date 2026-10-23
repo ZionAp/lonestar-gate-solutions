@@ -176,9 +176,23 @@ document.addEventListener('DOMContentLoaded', function () {
         let index = 0;
         let timer = null;
 
+        // Hero slides defer their background image to a CSS class so the
+        // browser only downloads images as they are needed. Load the next
+        // slide's background one step early to avoid a visible gap.
+        function loadSlide(at) {
+            const slide = slides[(at + slides.length) % slides.length];
+            const id = slide && slide.dataset ? slide.dataset.slide : '';
+            if (id) slide.classList.add('hero-slide--' + id);
+        }
+
+        loadSlide(0);
+        loadSlide(1);
+
         function showNext() {
             slides[index].classList.remove('is-active');
             index = (index + 1) % slides.length;
+            loadSlide(index);
+            loadSlide(index + 1);
             slides[index].classList.add('is-active');
         }
 
@@ -308,7 +322,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (item.classList.contains('is-active')) return;
 
                 areaItems.forEach(function (other) {
-                    other.classList.toggle('is-active', other === item);
+                    const active = other === item;
+                    other.classList.toggle('is-active', active);
+                    other.setAttribute('aria-pressed', String(active));
                 });
 
                 const city = item.getAttribute('data-city') || item.textContent.trim();
