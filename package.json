@@ -2,12 +2,13 @@
   "name": "lonestar-gate-solutions",
   "version": "1.0.0",
   "private": true,
-  "description": "Veteran-owned Austin gate installation, repair, sales & welding website",
+  "description": "Austin gate installation, repair, sales & welding website",
   "type": "module",
   "scripts": {
     "start": "node tests/server.js",
-    "test": "node tests/site.test.js && node tests/server.test.js",
-    "lint:html": "html-validate index.html",
+    "generate:areas": "node scripts/generate-areas.mjs",
+    "test": "node tests/site.test.js && node tests/server.test.js && node tests/areas.test.js",
+    "lint:html": "html-validate index.html areas/*.html",
     "lint:css": "csstree-validator css/style.css",
     "lint": "npm run lint:html && npm run lint:css && node --check js/main.js",
     "verify": "npm run lint && npm test"

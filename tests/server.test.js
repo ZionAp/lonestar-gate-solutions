@@ -88,6 +88,18 @@ try {
     assert.equal(icon.status, 200);
   });
 
+  await check('serves the area hub and city guides', async () => {
+    const hub = await request(port, '/areas/');
+    assert.equal(hub.status, 200);
+    assert.match(hub.headers['content-type'], /^text\/html/);
+    assert.match(hub.body, /Find your city/);
+
+    const city = await request(port, '/areas/austin.html');
+    assert.equal(city.status, 200);
+    assert.match(city.headers['content-type'], /^text\/html/);
+    assert.match(city.body, /Gate Installation, Repair &amp; Welding in Austin, TX/);
+  });
+
   await check('serves self-hosted fonts with correct type', async () => {
     const res = await request(port, '/fonts/inter-latin.woff2');
     assert.equal(res.status, 200);
@@ -149,6 +161,7 @@ try {
       '/.npmrc',
       '/.gitignore',
       '/tests/server.js',
+      '/send-quote.php',
       '/node_modules/jsdom/package.json'
     ];
 

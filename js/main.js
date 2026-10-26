@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let ticking = false;
 
     function updateActiveNav() {
+        if (!sections.length) return;
+
         const scrollPosition = window.scrollY + headerHeight + 100;
         let current = sections.length ? sections[0].id : '';
 
@@ -120,13 +122,31 @@ document.addEventListener('DOMContentLoaded', function () {
         formStatus.className = 'form-status' + (type ? ' ' + type : '');
     }
 
+    function showQuoteResult() {
+        const params = new URLSearchParams(window.location.search);
+        const result = params.get('quote');
+        if (!result) return;
+
+        if (result === 'sent') {
+            setFormStatus('Thank you! Your quote request has been sent. We will contact you within 24 hours.', 'success');
+        } else if (result === 'error') {
+            setFormStatus('We could not send your request. Please call (737) 265-4627 or email lonestargatesrepair@gmail.com.', 'error');
+        }
+
+        if (window.history && typeof window.history.replaceState === 'function') {
+            window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+        }
+    }
+
     if (quoteForm) {
         quoteForm.addEventListener('input', function () {
             setFormStatus('', '');
         });
 
-        quoteForm.addEventListener('submit', function (e) {
+        quoteForm.addEventListener('submit', async function (e) {
             e.preventDefault();
+
+            if (quoteForm.dataset.submitting === 'true') return;
 
             const formData = new FormData(quoteForm);
             const name = String(formData.get('name') || '').trim();
@@ -149,24 +169,75 @@ document.addEventListener('DOMContentLoaded', function () {
             const submitBtn = quoteForm.querySelector('button[type="submit"]');
             if (!submitBtn || submitBtn.disabled) return;
 
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Request Sent!';
-            submitBtn.disabled = true;
-            submitBtn.classList.add('is-success');
-            setFormStatus('', '');
+            if (typeof window.fetch !== 'function') {
+                quoteForm.submit();
+                return;
+            }
 
-            setTimeout(function () {
-                setFormStatus(
-                    'Thank you ' + name + '! Your quote request has been received. ' +
-                    'We will call you at ' + phone + ' within 24 hours to discuss your ' + service + ' project.',
-                    'success'
-                );
+            const originalText = submitBtn.innerHTML;
+            const controller = typeof window.AbortController === 'function' ? new window.AbortController() : null;
+            const timeoutId = window.setTimeout(function () {
+                if (controller) controller.abort();
+            }, 15000);
+
+            let succeeded = false;
+            quoteForm.dataset.submitting = 'true';
+            setFormStatus('Sending your request...', '');
+            submitBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-paper-plane"></use></svg> Sending...';
+            submitBtn.disabled = true;
+            submitBtn.setAttribute('aria-busy', 'true');
+
+            try {
+                const options = {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                };
+                if (controller) options.signal = controller.signal;
+
+                const response = await fetch(quoteForm.action, options);
+                let payload = {};
+                try {
+                    payload = await response.json();
+                } catch (error) {
+                    payload = {};
+                }
+
+                if (!response.ok || !payload.ok) {
+                    throw new Error(payload.message || 'We could not send your request. Please call (737) 265-4627 or email lonestargatesrepair@gmail.com.');
+                }
+
+                succeeded = true;
                 quoteForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('is-success');
-            }, 800);
+                setFormStatus(payload.message || 'Thank you! Your quote request has been sent. We will contact you within 24 hours.', 'success');
+                submitBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg> Request Sent!';
+                submitBtn.classList.add('is-success');
+
+                window.setTimeout(function () {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.removeAttribute('aria-busy');
+                    submitBtn.classList.remove('is-success');
+                }, 800);
+            } catch (error) {
+                const message = error && error.name === 'AbortError'
+                    ? 'The request timed out. Please call (737) 265-4627 or email lonestargatesrepair@gmail.com.'
+                    : 'We could not send your request. Please call (737) 265-4627 or email lonestargatesrepair@gmail.com.';
+                setFormStatus(message, 'error');
+            } finally {
+                window.clearTimeout(timeoutId);
+                delete quoteForm.dataset.submitting;
+
+                if (!succeeded) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.removeAttribute('aria-busy');
+                    submitBtn.classList.remove('is-success');
+                }
+            }
         });
+
+        showQuoteResult();
     }
 
     // Cycling slideshows (hero background + about photo)
@@ -313,6 +384,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const areasGrid = document.getElementById('areasGrid');
     const areaTitle = document.getElementById('areaTitle');
     const areaBlurb = document.getElementById('areaBlurb');
+    const areaGuideLink = document.getElementById('areaGuideLink');
+    const areaGuideLabel = document.getElementById('areaGuideLabel');
 
     if (areasGrid && areaTitle && areaBlurb) {
         const areaItems = Array.from(areasGrid.querySelectorAll('.area-item'));
@@ -329,6 +402,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const city = item.getAttribute('data-city') || item.textContent.trim();
                 const blurb = item.getAttribute('data-blurb') || '';
+
+                if (areaGuideLink) {
+                    const slug = city.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    areaGuideLink.href = 'areas/' + slug + '.html';
+                    areaGuideLink.setAttribute('aria-label', 'Read the ' + city + ' gate service guide');
+                    if (areaGuideLabel) areaGuideLabel.textContent = 'Read the ' + city + ' gate guide';
+                }
 
                 areaBlurb.classList.add('is-changing');
                 if (prefersReducedMotion) {

@@ -23,7 +23,7 @@ const types = {
 };
 
 const publicFiles = new Set(['index.html', 'favicon.ico', 'robots.txt', 'sitemap.xml']);
-const publicDirs = new Set(['css', 'js', 'images', 'fonts']);
+const publicDirs = new Set(['css', 'js', 'images', 'fonts', 'areas']);
 
 const securityHeaders = {
   'X-Content-Type-Options': 'nosniff',

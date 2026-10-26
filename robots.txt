@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lonestargatesolutions.com/sitemap.xml
+Sitemap: https://lonestargate.com/sitemap.xml
