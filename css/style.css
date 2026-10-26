@@ -474,23 +474,15 @@ a {
 .hero-slide {
     position: absolute;
     inset: 0;
-    background-position: center;
-    background-size: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     opacity: 0;
     transform: scale(1.06);
     transition: opacity 1.2s ease, transform 6s ease;
     will-change: opacity, transform;
 }
-
-.hero-slide--1 { background-image: url('../images/gallery/IMG-20261021-WA0047-thumb.jpg'); }
-.hero-slide--2 { background-image: url('../images/gallery/IMG-20261021-WA0026-thumb.jpg'); }
-.hero-slide--3 { background-image: url('../images/gallery/IMG-20261021-WA0028-thumb.jpg'); }
-.hero-slide--4 { background-image: url('../images/gallery/IMG-20261021-WA0035-thumb.jpg'); }
-.hero-slide--5 { background-image: url('../images/gallery/IMG-20261021-WA0052-thumb.jpg'); }
-.hero-slide--6 { background-image: url('../images/gallery/IMG-20261021-WA0056-thumb.jpg'); }
-.hero-slide--7 { background-image: url('../images/gallery/IMG-20261021-WA0057-thumb.jpg'); }
-.hero-slide--8 { background-image: url('../images/gallery/IMG-20261021-WA0059-thumb.jpg'); }
-.hero-slide--9 { background-image: url('../images/gallery/IMG-20261021-WA0060-thumb.jpg'); }
 
 .hero-slide.is-active {
     opacity: 1;
