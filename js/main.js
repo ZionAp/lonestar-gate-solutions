@@ -247,9 +247,22 @@ document.addEventListener('DOMContentLoaded', function () {
         let index = 0;
         let timer = null;
 
+        function loadSlide(at) {
+            const slide = slides[(at + slides.length) % slides.length];
+            const id = slide && slide.dataset ? slide.dataset.slide : '';
+            if (id && !slide.classList.contains('hero-slide--' + id)) {
+                slide.classList.add('hero-slide--' + id);
+            }
+        }
+
+        loadSlide(0);
+        loadSlide(1);
+
         function showNext() {
             slides[index].classList.remove('is-active');
             index = (index + 1) % slides.length;
+            loadSlide(index);
+            loadSlide(index + 1);
             slides[index].classList.add('is-active');
         }
 
