@@ -31,7 +31,7 @@
     <!-- Preload critical assets -->
     <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/plus-jakarta-sans-latin.woff2" crossorigin>
-    <link rel="preload" as="image" href="images/gallery/IMG-20261021-WA0047-thumb.jpg" imagesrcset="images/gallery/IMG-20261021-WA0047-thumb.jpg" imagesizes="100vw" fetchpriority="high">
+    <link rel="preload" as="image" href="images/gallery/IMG-20261021-WA0047-thumb.webp" type="image/webp" fetchpriority="high">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -249,15 +249,42 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
-            <img class="hero-slide hero-slide--1 is-active" src="images/gallery/IMG-20261021-WA0047-thumb.jpg" alt="" decoding="async" fetchpriority="high">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0026-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0028-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0035-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0052-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0056-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0057-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0059-thumb.jpg" alt="" loading="lazy" decoding="async">
-            <img class="hero-slide" src="images/gallery/IMG-20261021-WA0060-thumb.jpg" alt="" loading="lazy" decoding="async">
+            <picture class="hero-slide hero-slide--1 is-active">
+                <source srcset="images/gallery/IMG-20261021-WA0047-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0047-thumb.jpg" alt="" decoding="async" fetchpriority="high">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0026-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0026-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0028-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0028-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0035-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0035-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0052-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0052-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0056-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0056-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0057-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0057-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0059-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0059-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
+            <picture class="hero-slide">
+                <source srcset="images/gallery/IMG-20261021-WA0060-thumb.webp" type="image/webp">
+                <img src="images/gallery/IMG-20261021-WA0060-thumb.jpg" alt="" loading="lazy" decoding="async">
+            </picture>
         </div>
         <div class="hero-bg"></div>
         <div class="container">
