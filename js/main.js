@@ -408,6 +408,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     areaGuideLink.setAttribute('aria-label', 'Read the ' + city + ' gate service guide');
                     if (areaGuideLabel) areaGuideLabel.textContent = 'Read the ' + city + ' gate guide';
                 }
+                const areasBrowseAllLink = document.getElementById('areasBrowseAllLink');
+                if (areasBrowseAllLink) {
+                    const slug = city.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    areasBrowseAllLink.href = 'areas/' + slug + '.html';
+                    areasBrowseAllLink.textContent = city + ' gate service guide';
+                }
 
                 areaBlurb.classList.add('is-changing');
                 if (prefersReducedMotion) {
