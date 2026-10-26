@@ -32,3 +32,16 @@ AddOutputFilterByType DEFLATE text/html text/css application/javascript applicat
 AddType font/woff2 .woff2
 AddType image/webp .webp
 </IfModule>
+
+# Allow search engine files
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Require all granted
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Order allow,deny
+    Allow from all
+  </FilesMatch>
+</IfModule>
