@@ -486,7 +486,7 @@ function footer() {
                         <li>${icon('phone')} <a href="${phoneHref}">${phoneHtml}</a></li>
                         <li>${icon('envelope')} <a href="mailto:lonestargatesrepair@gmail.com">lonestargatesrepair@gmail.com</a></li>
                         <li>${icon('map-marker-alt')} Austin, TX &amp; Surrounding Areas</li>
-                        <li>${icon('clock')} Mon-Fri 8AM-6PM | Sat 9AM-4PM</li>
+                        <li>${icon('clock')} Mon-Fri, Sun 8AM-6PM | Sat Closed</li>
                     </ul>
                 </div>
             </div>
