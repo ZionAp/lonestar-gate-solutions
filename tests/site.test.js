@@ -77,6 +77,7 @@ async function main() {
   });
 
   check('essential SEO meta tags are present', () => {
+    assert.strictEqual(d.querySelectorAll('link[rel="canonical"]').length, 1, 'expected exactly one canonical');
     assert.ok(d.querySelector('link[rel="canonical"][href^="https://"]'), 'missing canonical');
     assert.match(d.querySelector('meta[name="robots"]')?.content || '', /index/, 'missing robots index');
     assert.strictEqual(d.querySelector('meta[property="og:image"]')?.content?.includes('/images/og-image.jpg'), true, 'missing og:image');
@@ -105,8 +106,12 @@ async function main() {
       'IMG-20261021-WA0035-thumb.webp', 'IMG-20261021-WA0047-thumb.webp',
       'IMG-20261021-WA0052-thumb.webp', 'IMG-20261021-WA0056-thumb.webp',
       'IMG-20261021-WA0057-thumb.webp', 'IMG-20261021-WA0059-thumb.webp',
-      'IMG-20261021-WA0060-thumb.webp'
+      'IMG-20261021-WA0060-thumb.webp', 'IMG-20261030-WA0011-thumb.webp',
+      'IMG-20261030-WA00122-thumb.webp', 'IMG-20261030-WA0013-thumb.webp',
+      'IMG-20261030-WA0014-thumb.webp', 'IMG-20261030-WA0015-thumb.webp',
+      'IMG-20261030-WA0016-thumb.webp'
     ].forEach(f => assert.ok(fs.existsSync(path.join(siteRoot, 'images', 'gallery', f)), 'missing ' + f));
+    assert.strictEqual(d.querySelectorAll('#galleryTrack .gallery-item').length, 15, 'expected all 15 gallery projects');
   });
 
   check('hero backgrounds are deferred until needed', () => {
