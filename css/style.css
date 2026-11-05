@@ -960,7 +960,7 @@ a {
     stroke: var(--accent-gold);
     stroke-width: 2;
     opacity: 0.7;
-    transform-origin: 120px 120px;
+    transform-origin: 0 0;
     animation: texas-pulse 2.5s ease-out infinite;
 }
 

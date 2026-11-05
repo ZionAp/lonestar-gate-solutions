@@ -386,6 +386,44 @@ document.addEventListener('DOMContentLoaded', function () {
     const areaGuideLink = document.getElementById('areaGuideLink');
     const areaGuideLabel = document.getElementById('areaGuideLabel');
 
+    const markerGroup = document.querySelector('.texas-marker-group');
+    const cityMarkers = {
+        'Austin': [120, 120],
+        'Round Rock': [122, 106],
+        'Cedar Park': [112, 102],
+        'Pflugerville': [128, 108],
+        'Georgetown': [118, 92],
+        'Leander': [108, 98],
+        'Lakeway': [105, 118],
+        'Bee Cave': [102, 124],
+        'Westlake Hills': [112, 120],
+        'Dripping Springs': [95, 136],
+        'Spicewood': [88, 124],
+        'Buda': [125, 136],
+        'Kyle': [128, 146],
+        'Hutto': [132, 100],
+        'Manor': [140, 118],
+        'Lago Vista': [95, 108],
+        'Wimberley': [105, 152],
+        'Driftwood': [100, 140],
+        'Del Valle': [135, 126],
+        'Jollyville': [115, 108],
+        'Liberty Hill': [100, 94],
+        'San Marcos': [120, 172]
+    };
+
+    function moveAreaMarker(city) {
+        const position = cityMarkers[city] || cityMarkers.Austin;
+        if (!position) return;
+        const x = position[0];
+        const y = position[1];
+        if (markerGroup) {
+            markerGroup.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
+        }
+        const svg = markerGroup ? markerGroup.ownerSVGElement : null;
+        if (svg) svg.setAttribute('aria-label', 'Map of Texas highlighting ' + city);
+    }
+
     if (areasGrid && areaTitle && areaBlurb) {
         const areaItems = Array.from(areasGrid.querySelectorAll('.area-item'));
 
@@ -401,6 +439,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const city = item.getAttribute('data-city') || item.textContent.trim();
                 const blurb = item.getAttribute('data-blurb') || '';
+
+                moveAreaMarker(city);
 
                 if (areaGuideLink) {
                     const slug = city.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -430,6 +470,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 250);
             });
         });
+
+        moveAreaMarker('Austin');
     }
 
     // Update copyright year
