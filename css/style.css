@@ -892,14 +892,15 @@ a {
     background: linear-gradient(135deg, var(--steel-blue), #2c5aa0);
     color: white;
     padding: 3rem 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
-    height: 300px;
+    min-height: 360px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    box-shadow: var(--shadow-large);
 }
 
 .map-placeholder > i,
@@ -940,26 +941,32 @@ a {
 }
 
 .texas-outline {
-    width: 120px;
-    height: 155px;
+    width: 200px;
+    height: 260px;
+    max-width: 100%;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
 }
 
 .texas-shape {
-    fill: rgba(255, 255, 255, 0.12);
-    stroke: var(--burnt-orange);
-    stroke-width: 2;
+    fill: rgba(255, 255, 255, 0.18);
+    stroke: rgba(255, 255, 255, 0.92);
+    stroke-width: 2.5;
     stroke-linejoin: round;
+    shape-rendering: geometricPrecision;
 }
 
 .texas-marker {
     fill: var(--accent-gold);
+    stroke: #ffffff;
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
 }
 
 .texas-marker-pulse {
     fill: none;
     stroke: var(--accent-gold);
     stroke-width: 2;
-    opacity: 0.7;
+    opacity: 0.75;
     transform-box: fill-box;
     transform-origin: center;
     animation: texas-pulse 2.5s ease-out infinite;
@@ -2840,8 +2847,13 @@ a {
     }
 
     .map-placeholder {
-        height: auto;
+        min-height: 300px;
         padding: 2rem 1rem;
+    }
+
+    .texas-outline {
+        width: 160px;
+        height: 208px;
     }
 
     .gallery-item {
