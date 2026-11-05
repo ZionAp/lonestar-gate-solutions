@@ -28,7 +28,9 @@ const cities = [
   ['wimberley', 'Wimberley'],
   ['driftwood', 'Driftwood'],
   ['del-valle', 'Del Valle'],
-  ['jollyville', 'Jollyville']
+  ['jollyville', 'Jollyville'],
+  ['liberty-hill', 'Liberty Hill'],
+  ['san-marcos', 'San Marcos']
 ];
 
 const read = (file) => fs.readFile(path.join(areasDir, file), 'utf8');

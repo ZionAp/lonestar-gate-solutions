@@ -328,6 +328,40 @@ const areas = [
     ],
     areaLine: `We also serve Austin, Round Rock, Cedar Park, and nearby communities.`
   }
+  ,
+  {
+    city: 'Liberty Hill',
+    slug: 'liberty-hill',
+    nearby: ['leander', 'cedar-park', 'georgetown'],
+    intro: `Liberty Hill sits northwest of Austin where the Hill Country begins, with growing neighborhoods, acreage, ranches, and long private driveways. Gate systems here need to handle limestone, slopes, wind, and distance while still being easy for residents and guests to use.`,
+    local: [
+      `Many Liberty Hill properties are on larger lots with long driveways, so gate placement, power, and access control need planning from the start. We install swing, slide, and cantilever gates with keypads, remotes, and safety sensors sized for the gate and the site. On acreage and ranch entrances, we build heavy-duty frames and reinforce hinges for daily use.`,
+      `Limestone soil, slopes, and seasonal storms can shift posts and stress hardware. We check drainage, alignment, and operator placement, and we recommend battery backup or solar-friendly options when power is far from the entrance. Mobile welding is especially useful for on-site frame and hinge repairs in rural areas.`
+    ],
+    issues: `Liberty Hill gate calls often involve a gate that will not open from the road, a remote with limited range, a frame that has shifted after weather, or an operator struggling on a slope. We test power, sensors, alignment, and control settings before recommending repairs.`,
+    faqs: [
+      ['Do you install ranch and driveway gates in Liberty Hill?', `Yes. We build and service gates for rural properties, acreage, HOAs, and residential driveways.`],
+      ['Can you work on gates far from the house in Liberty Hill?', `Yes. We plan power, backup batteries, and access control for long driveways and remote entrances.`]
+    ],
+    areaLine: `We also serve Leander, Cedar Park, Georgetown, and nearby Hill Country communities.`
+  },
+  {
+    city: 'San Marcos',
+    slug: 'san-marcos',
+    nearby: ['kyle', 'buda', 'austin'],
+    intro: `San Marcos sits along I-35 between Austin and San Antonio, with a mix of university-area housing, established neighborhoods, new development, and commercial property. Gate systems here range from compact residential driveways to busy business and apartment entrances.`,
+    local: [
+      `In San Marcos, we see everything from older gates that need hinge and frame repair to new installations with keypads, remotes, and video entry. We size operators for the actual gate, confirm swing clearances, and set up access control that works for residents, guests, and delivery traffic. For commercial and multi-tenant properties, we service high-cycle slide gates, loops, and safety devices.`,
+      `Central Texas heat, humidity near the river, and seasonal storms can affect posts, wiring, and moving parts. We check alignment, drainage, and power, then adjust or repair the gate so it travels smoothly without binding. Mobile welding is available for on-site frame and hinge repairs.`
+    ],
+    issues: `San Marcos gate problems often involve a gate that drags, a remote that works only sometimes, an operator that reverses unexpectedly, or a sensor that keeps tripping. We test the operator, wiring, and safety devices, then explain whether a repair or replacement is the better value.`,
+    faqs: [
+      ['Do you repair automatic gates in San Marcos?', `Yes. We service swing, slide, cantilever, and bi-parting operators, plus keypads, remotes, sensors, and access control.`],
+      ['Do you service commercial and apartment gates in San Marcos?', `Yes. We work on commercial entrances, high-cycle operators, access control, loops, and safety devices.`]
+    ],
+    areaLine: `We also serve Kyle, Buda, Austin, and nearby Hays County communities.`
+  }
+
 ];
 
 const bySlug = new Map(areas.map(area => [area.slug, area]));
