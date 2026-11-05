@@ -1910,6 +1910,53 @@ a {
     font-size: 0.7rem;
 }
 
+/* Area page project photos */
+.area-gallery {
+    padding: 4rem 0;
+    background-color: var(--dark-bg);
+}
+
+.area-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.area-photo {
+    margin: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-surface);
+    aspect-ratio: 4 / 3;
+}
+
+.area-photo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.area-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.area-photo:hover img {
+    transform: scale(1.04);
+}
+
+.area-photo figcaption {
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
 /* Responsive Design */
 @media (max-width: 1100px) {
     .nav-menu {
@@ -2073,7 +2120,8 @@ a {
 @media (hover: none) {
     .gallery-item:hover img,
     .service-card:hover,
-    .area-card:hover {
+    .area-card:hover,
+    .area-photo:hover img {
         transform: none;
     }
 }
@@ -2120,6 +2168,23 @@ a {
         gap: 1rem;
     }
 }
+
+@media (max-width: 968px) {
+    .area-photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .area-gallery {
+        padding: 3rem 0;
+    }
+
+    .area-photo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
     html {

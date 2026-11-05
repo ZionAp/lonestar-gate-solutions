@@ -7,6 +7,24 @@ const areasDir = path.join(root, 'areas');
 const siteUrl = 'https://lonestargate.com';
 const lastmod = '2026-10-26';
 
+const galleryPhotos = [
+  { file: 'IMG-20261021-WA0026', thumbWidth: 450, thumbHeight: 800, alt: 'Custom gate installation project in Austin, TX', caption: 'Custom Gate Installation' },
+  { file: 'IMG-20261021-WA0028', thumbWidth: 600, thumbHeight: 800, alt: 'Automatic driveway gate project in Austin, TX', caption: 'Automatic Driveway Gate' },
+  { file: 'IMG-20261021-WA0035', thumbWidth: 450, thumbHeight: 800, alt: 'Custom welding and fabrication work in Austin, TX', caption: 'Welding & Fabrication' },
+  { file: 'IMG-20261021-WA0047', thumbWidth: 800, thumbHeight: 600, alt: 'Gate installation work by LoneStar Gate Solutions', caption: 'Gate Installation' },
+  { file: 'IMG-20261021-WA0052', thumbWidth: 450, thumbHeight: 800, alt: 'Access control and gate operator work in Austin, TX', caption: 'Access Control & Operators' },
+  { file: 'IMG-20261021-WA0056', thumbWidth: 600, thumbHeight: 800, alt: 'Custom gate project in the Austin area', caption: 'Custom Gate Project' },
+  { file: 'IMG-20261021-WA0057', thumbWidth: 450, thumbHeight: 800, alt: 'Gate repair service in Austin, TX', caption: 'Gate Repair Service' },
+  { file: 'IMG-20261021-WA0059', thumbWidth: 600, thumbHeight: 800, alt: 'Completed gate installation in Central Texas', caption: 'Completed Installation' },
+  { file: 'IMG-20261021-WA0060', thumbWidth: 600, thumbHeight: 800, alt: 'Gate and welding project by LoneStar Gate Solutions', caption: 'Gate & Welding Work' },
+  { file: 'IMG-20261030-WA0011', thumbWidth: 600, thumbHeight: 800, alt: 'Automatic swing gate with operator mounted on a stone pillar', caption: 'Swing Gate Automation' },
+  { file: 'IMG-20261030-WA00122', thumbWidth: 688, thumbHeight: 800, alt: 'Automatic privacy slide gate with a ground-mounted operator', caption: 'Privacy Slide Gate Automation' },
+  { file: 'IMG-20261030-WA0013', thumbWidth: 600, thumbHeight: 800, alt: 'LiftMaster gate keypad installed on a metal gooseneck pedestal', caption: 'LiftMaster Keypad Installation' },
+  { file: 'IMG-20261030-WA0014', thumbWidth: 800, thumbHeight: 600, alt: 'Dual automatic swing driveway gate installed by LoneStar Gate Solutions', caption: 'Dual Swing Driveway Gate' },
+  { file: 'IMG-20261030-WA0015', thumbWidth: 600, thumbHeight: 800, alt: 'LiftMaster slide gate operator installed on a chain-link security gate', caption: 'Commercial Slide Gate Operator' },
+  { file: 'IMG-20261030-WA0016', thumbWidth: 600, thumbHeight: 800, alt: 'LiftMaster commercial gate operator mounted on a concrete pad', caption: 'LiftMaster Gate Operator' }
+];
+
 const areas = [
   {
     city: 'Austin',
@@ -401,7 +419,7 @@ function header() {
                 <div class="top-bar-left">
                     <span>${icon('star')} Deep in the Heart of Texas</span>
                     <span>${icon('map-marker-alt')} Serving Austin, TX &amp; Surrounding Areas</span>
-                    <span>${icon('clock')} Mon-Fri 8AM-6PM | 24/7 Emergency Service</span>
+                    <span>${icon('clock')} Mon-Sun 8AM-6PM (Sat Closed) | 24/7 Emergency Service</span>
                 </div>
                 <div class="top-bar-right">
                     <span class="top-bar-mobile-location">${icon('map-marker-alt')} Austin, TX</span>
@@ -636,7 +654,7 @@ function sidebar(area) {
                 </div>
                 <div class="sidebar-card">
                     <h2>Service hours</h2>
-                    <p>Mon-Fri 8AM-6PM<br>Sat 9AM-4PM<br>24/7 emergency service</p>
+                    <p>Mon-Fri, Sun: 8AM-6PM<br>Sat: Closed<br>24/7 Emergency Service</p>
                 </div>
             </aside>`;
 }
@@ -736,6 +754,8 @@ function faqSchema(area) {
 }
 
 function renderCity(area) {
+  const areaIndex = areas.indexOf(area);
+  const photoSet = [0, 5, 10].map(offset => galleryPhotos[(areaIndex * 3 + offset) % galleryPhotos.length]);
   const canonical = `${siteUrl}/areas/${area.slug}.html`;
   const title = `Gate Repair in ${area.city}, TX | LoneStar`;
   const description = `Gate repair, installation, automation and welding in ${area.city}, TX. Licensed, insured, 1-year labor warranty. Call (737) 265-4627 for a quote.`;
@@ -813,6 +833,26 @@ function renderCity(area) {
             <div class="container article-wrap">
                 ${article}
                 ${sidebar(area)}
+            </div>
+        </section>
+
+        <section class="area-gallery">
+            <div class="container">
+                <div class="section-header section-header--left">
+                    <h2 class="section-title">Recent gate work near ${area.city}</h2>
+                    <p class="section-subtitle">Installation, repair, automation, and welding projects by LoneStar Gate Solutions</p>
+                </div>
+                <div class="area-photo-grid">
+                    ${photoSet.map(photo => `<figure class="area-photo">
+                        <a href="../images/gallery/${photo.file}.jpg" target="_blank" rel="noopener">
+                            <picture>
+                                <source srcset="../images/gallery/${photo.file}-thumb.webp" type="image/webp">
+                                <img src="../images/gallery/${photo.file}-thumb.jpg" width="${photo.thumbWidth}" height="${photo.thumbHeight}" loading="lazy" decoding="async" alt="${escapeHtml(photo.alt)}">
+                            </picture>
+                        </a>
+                        <figcaption>${escapeHtml(photo.caption)}</figcaption>
+                    </figure>`).join('\n                    ')}
+                </div>
             </div>
         </section>
 
@@ -989,5 +1029,5 @@ for (const area of areas) {
 }
 
 await fs.writeFile(path.join(areasDir, 'index.html'), renderHub(), 'utf8');
-console.log('Generated areas/index.html and 20 city pages.');
+console.log(`Generated areas/index.html and ${areas.length} city pages.`);
 if (failures) process.exitCode = 1;
