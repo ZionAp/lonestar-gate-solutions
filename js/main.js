@@ -386,7 +386,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const areaGuideLink = document.getElementById('areaGuideLink');
     const areaGuideLabel = document.getElementById('areaGuideLabel');
 
-    const markerGroup = document.querySelector('.texas-marker-group');
+    const marker = document.querySelector('.texas-marker');
+    const markerPulse = document.querySelector('.texas-marker-pulse');
     const cityMarkers = {
         'Austin': [120, 120],
         'Round Rock': [122, 106],
@@ -417,10 +418,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!position) return;
         const x = position[0];
         const y = position[1];
-        if (markerGroup) {
-            markerGroup.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
+        if (marker) {
+            marker.setAttribute('cx', String(x));
+            marker.setAttribute('cy', String(y));
         }
-        const svg = markerGroup ? markerGroup.ownerSVGElement : null;
+        if (markerPulse) {
+            markerPulse.setAttribute('cx', String(x));
+            markerPulse.setAttribute('cy', String(y));
+        }
+        const svg = marker ? marker.ownerSVGElement : null;
         if (svg) svg.setAttribute('aria-label', 'Map of Texas highlighting ' + city);
     }
 
