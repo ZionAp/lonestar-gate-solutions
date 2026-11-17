@@ -561,7 +561,7 @@ function footer() {
         </a>
     </div>
 
-    <script src="../js/main.js"></script>`;
+    <script src="../js/main.js?v=20261117"></script>`;
 }
 
 function documentHead({ title, description, canonical, jsonLd }) {
@@ -592,7 +592,7 @@ function documentHead({ title, description, canonical, jsonLd }) {
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
     <link rel="preload" as="font" type="font/woff2" href="../fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="../fonts/plus-jakarta-sans-latin.woff2" crossorigin>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=20261117">
     ${schema}
 </head>`;
 }
