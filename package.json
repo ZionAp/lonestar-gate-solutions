@@ -8,7 +8,7 @@
     "start": "node tests/server.js",
     "generate:areas": "node scripts/generate-areas.mjs",
     "test": "node tests/site.test.js && node tests/server.test.js && node tests/areas.test.js",
-    "lint:html": "html-validate index.html areas/*.html 404.html cost/*.html",
+    "lint:html": "html-validate index.html areas/*.html 404.html cost/*.html problems/*.html",
     "lint:css": "csstree-validator css/style.css",
     "lint": "npm run lint:html && npm run lint:css && node --check js/main.js",
     "verify": "npm run lint && npm test"

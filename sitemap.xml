@@ -174,4 +174,7 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <url><loc>https://lonestargate.com/problems/gate-wont-open.html</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://lonestargate.com/problems/gate-remote-not-working.html</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+    <url><loc>https://lonestargate.com/problems/gate-damaged-by-storm.html</loc><lastmod>2026-11-17</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
