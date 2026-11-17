@@ -91,6 +91,20 @@ async function main() {
     assert.strictEqual(preload.getAttribute('fetchpriority'), 'high');
   });
 
+  check('scroll-snap carousels do not break LCP reporting', () => {
+    const rawCss = fs.readFileSync(path.join(siteRoot, 'css', 'style.css'), 'utf8');
+    const css = rawCss.replace(/\/\*[\s\S]*?\*\//g, '');
+    const galleryRule = css.match(/\.gallery-track\s*{[^}]*}/);
+    assert.ok(galleryRule, 'missing .gallery-track rule');
+    assert.match(galleryRule[0], /scroll-snap-type:\s*x\s+mandatory/, '.gallery-track should keep scroll snapping');
+    assert.doesNotMatch(galleryRule[0], /scroll-behavior:\s*smooth/, '.gallery-track scroll-behavior: smooth suppresses LCP');
+
+    const testiRule = css.match(/\.testimonials-track\s*{[^}]*}/);
+    assert.ok(testiRule, 'missing .testimonials-track rule');
+    assert.match(testiRule[0], /scroll-snap-type:\s*x\s+mandatory/, '.testimonials-track should keep scroll snapping');
+    assert.doesNotMatch(testiRule[0], /scroll-behavior:\s*smooth/, '.testimonials-track scroll-behavior: smooth suppresses LCP');
+  });
+
   check('images use WebP with JPEG fallback via <picture>', () => {
     const pics = d.querySelectorAll('picture');
     assert.ok(pics.length >= 13, 'expected gallery/about pictures, got ' + pics.length);

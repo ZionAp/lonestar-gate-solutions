@@ -998,7 +998,6 @@ a {
     gap: 1.25rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     padding: 0.25rem 0.25rem 1.5rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
@@ -1542,7 +1541,6 @@ a {
     gap: 2rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     padding: 0.25rem 0.25rem 1.5rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;

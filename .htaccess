@@ -1,8 +1,27 @@
 DirectoryIndex index.html
 Options -Indexes
 
+# Branded 404 page (served with a real 404 status)
+ErrorDocument 404 /404.html
+
+# --- Canonical host: force https + apex (skip ACME/SSL validation) ----------
+# The site is canonical at https://lonestargate.com, so send every other
+# host/protocol there with a single 301 to avoid duplicate content.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Never redirect ACME challenge requests (keeps Let's Encrypt renewal working)
+  RewriteCond %{REQUEST_URI} ^/\.well-known/ [NC]
+  RewriteRule ^ - [L]
+
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://lonestargate.com%{REQUEST_URI} [R=301,L]
+</IfModule>
+
 <IfModule mod_headers.c>
 Header always set X-Content-Type-Options "nosniff"
+Header always set Strict-Transport-Security "max-age=31536000"
 Header always set X-Frame-Options "DENY"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
 Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
@@ -53,4 +72,50 @@ AddType image/webp .webp
     Order allow,deny
     Allow from all
   </FilesMatch>
+</IfModule>
+
+# --- Hardening: never serve project internals in production -----------------
+# The Git deployment copies the whole repository into the web root, so dev
+# tooling (tests, scripts, package manifests, .git) must be denied explicitly.
+
+# Dotfiles: .git, .gitignore, .npmrc, .nvmrc, .htmlvalidate.json, .env, ...
+<FilesMatch "^\.">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Project metadata files
+<FilesMatch "^(package\.json|package-lock\.json|README\.md)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Build/test tooling by extension
+<FilesMatch "\.(mjs|py)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# tests/ and scripts/ directories in full
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(tests|scripts)/ - [F,L]
+</IfModule>
+<IfModule mod_alias.c>
+  RedirectMatch 403 ^/(tests|scripts)(/|$)
 </IfModule>
