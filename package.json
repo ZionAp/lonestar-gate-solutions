@@ -11,7 +11,10 @@
     "lint:html": "html-validate index.html service-areas.html areas/*.html 404.html cost/*.html problems/*.html brands/*.html neighborhoods/*.html compare/*.html blog/*.html",
     "lint:css": "csstree-validator css/style.css",
     "lint": "npm run lint:html && npm run lint:css && node --check js/main.js",
-    "verify": "npm run lint && npm test"
+    "verify": "npm run lint && npm test",
+    "audit": "node ../.tools/audit/audit.mjs --site gate --local --screens",
+    "audit:live": "node ../.tools/audit/audit.mjs --site gate --live --screens",
+    "audit:full": "node ../.tools/audit/audit.mjs --site gate --full --screens"
   },
   "engines": {
     "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
