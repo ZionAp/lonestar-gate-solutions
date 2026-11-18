@@ -119,3 +119,10 @@ AddType image/webp .webp
 <IfModule mod_alias.c>
   RedirectMatch 403 ^/(tests|scripts)(/|$)
 </IfModule>
+
+# --- Character encoding in HTTP headers -------------------------------------
+AddDefaultCharset UTF-8
+AddType 'text/html; charset=UTF-8' .html .htm
+AddType 'text/css; charset=UTF-8' .css
+AddType 'application/javascript; charset=UTF-8' .js
+AddType 'application/xml; charset=UTF-8' .xml
