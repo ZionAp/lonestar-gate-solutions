@@ -105,3 +105,6 @@
     .nav-menu { display: none !important; }
     .nav-menu.active { display: flex !important; }
 }
+
+/* LCP: paint the initial hero slide instantly; re-enable fade for later cycles */
+.hero-slide--1.is-active:not(.lcp-ready){transition:none;transform:none}
