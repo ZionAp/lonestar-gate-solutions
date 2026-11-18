@@ -194,6 +194,7 @@
 
 @media (max-width: 640px) {
     .hero { background: linear-gradient(165deg, #14202e 0%, #0c1219 55%, #162331 100%); }
+    .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 90% 60% at 50% 100%, rgba(217,95,67,.14), transparent 60%); pointer-events: none; z-index: 0; }
 }
 /* final mobile spacing cleanup */
 @media (max-width: 640px) {
