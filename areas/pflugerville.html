@@ -147,6 +147,54 @@
 
 .hero-eyebrow{display:inline-block;margin-bottom:.75rem;font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffb08f}
 
+/* ---- Mobile visual polish (compact, human-friendly first screen) ---- */
+@media (max-width: 768px) {
+    .top-bar { padding: .25rem 0; font-size: .78rem; }
+    .top-bar-content { gap: .5rem; }
+    .top-bar-phone, .top-bar-right a { padding: .35rem .65rem; font-size: .72rem; }
+    .top-bar-mobile-location { font-size: .72rem; }
+    .nav-content { padding: .55rem 0; }
+    .logo-mark { width: 36px; height: 36px; }
+    .logo-name { font-size: .95rem; }
+    .logo-tagline { font-size: .55rem; letter-spacing: .12em; }
+}
+@media (max-width: 640px) {
+    body { padding-bottom: calc(68px + var(--safe-area-bottom)); }
+    .hero { padding-top: calc(var(--header-height) + 1.25rem); padding-bottom: 2rem; }
+    .hero-title { font-size: clamp(1.7rem, 6.8vw, 2.05rem); line-height: 1.18; margin-bottom: .75rem; }
+    .hero-subtitle { font-size: .95rem; line-height: 1.6; margin-bottom: 1.25rem; }
+    .hero-cta { margin-bottom: 1.5rem; gap: .65rem; }
+    .hero-cta .btn { min-height: 48px; padding: .8rem 1rem; font-size: .9rem; }
+    .hero-trust { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem .75rem; }
+    .hero-trust .trust-item:nth-child(odd):last-child { grid-column: 1 / -1; }
+    .trust-item { font-size: .8rem; gap: .45rem; }
+    .trust-item .icon, .trust-item i { font-size: 1rem; }
+    .patriot-banner { padding: .85rem 0; }
+    .patriot-text { flex-direction: row; gap: .55rem; font-size: .9rem; letter-spacing: .02em; }
+    .patriot-star { font-size: .8em; }
+    .patriot-flag { opacity: .18; }
+    .services-preview, .full-services, .serve-section, .service-areas, .gallery,
+    .photo-gallery, .about, .testimonials, .faq, .contact, .area-article,
+    .cta-banner, .cta-section { padding: 2.75rem 0; }
+    .section-header { margin-bottom: 1.75rem; }
+    .section-title { font-size: 1.75rem; }
+    .form-group input, .form-group select, .form-group textarea { font-size: 16px; min-height: 48px; }
+    .contact-form .btn, .btn-large { min-height: 48px; }
+    .form-row { gap: .75rem; }
+    .footer { padding: 2rem 0 1rem; }
+}
+
+@media (max-width: 640px) {
+    .hero { background: linear-gradient(165deg, #14202e 0%, #0c1219 55%, #162331 100%); }
+}
+/* final mobile spacing cleanup */
+@media (max-width: 640px) {
+    .hero { padding-bottom: 0; }
+    .hero-content { gap: 1rem; }
+    .hero-visual { margin-top: 0; }
+}
+.service-link{color:#9a3412}
+
     </style>
 </head>
 <body>
