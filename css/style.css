@@ -90,3 +90,18 @@
     .testimonials-track, .gallery-track { scrollbar-width: none; -ms-overflow-style: none; }
     .testimonials-track::-webkit-scrollbar, .gallery-track::-webkit-scrollbar { display: none; }
 }
+
+/* ---- Remove any colored left-side artifacts on mobile ---- */
+@media (max-width: 640px) {
+    body { background-image: none !important; background-attachment: scroll !important; }
+    html { overflow-x: hidden !important; }
+    .hero-bg { display: none !important; }
+    .hero-bg::after { display: none !important; }
+    .texas-ribbon { display: none !important; }
+    .testimonials-track, .gallery-track { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+    .testimonials-track::-webkit-scrollbar, .gallery-track::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+    .service-detail, .about-texas, .area-hub-note, .testimonial-card, .sidebar-card--accent { border-left: none !important; }
+    * { box-shadow: none !important; }
+    .nav-menu { display: none !important; }
+    .nav-menu.active { display: flex !important; }
+}
