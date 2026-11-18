@@ -11,3 +11,18 @@
 .hero-visual-badge .icon{width:18px;height:18px;color:#D95F43}
 @media(max-width:968px){.hero-content{grid-template-columns:1fr;gap:2.5rem}.hero-visual{order:2}.hero-visual-slideshow{max-width:480px;height:440px}}
 @media(max-width:640px){.hero-content{grid-template-columns:1fr;gap:2rem}.hero-visual-slideshow{max-width:100%;height:360px}}
+
+/* Patriotic banner - authentic USA flag colors (red, white and blue) */
+.patriot-banner{position:relative;overflow:hidden;padding:2.25rem 0;background-color:#0a1931;border-top:1px solid #1e3a5f;border-bottom:1px solid #1e3a5f;text-align:center}
+.patriot-flag{position:absolute;inset:0;opacity:.22;pointer-events:none}
+.patriot-stripes{position:absolute;inset:0;z-index:0;background-image:repeating-linear-gradient(to bottom,#b31942 0,#b31942 7.7%,#ffffff 7.7%,#ffffff 15.4%)}
+.patriot-canton{position:absolute;top:0;left:0;width:42%;height:54%;z-index:1;background-color:#3c3b6e;background-image:radial-gradient(circle at 50% 50%,#ffffff 1.5px,transparent 2px),radial-gradient(circle at 50% 50%,#ffffff 1.5px,transparent 2px);background-size:26px 26px;background-position:0 0,13px 13px}
+.patriot-text{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:1.25rem;margin:0;flex-wrap:wrap;font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:clamp(1.4rem,4vw,2.5rem);letter-spacing:.04em;text-transform:uppercase;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.65)}
+.patriot-line:first-child{color:#ffffff}
+.patriot-line:last-child{color:#ff9b9b}
+.patriot-star{color:#ffd166;font-size:.7em}
+
+
+.patriot-line{background:none;-webkit-text-fill-color:currentColor;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.patriot-line:first-child{color:#ffffff}
+.patriot-line:last-child{color:#ff9b9b}
