@@ -118,7 +118,7 @@ for (const [slug] of cities) {
 
 const indexHtml = await fs.readFile(path.join(root, 'index.html'), 'utf8');
 const { document: home } = domFor(indexHtml, `${siteUrl}/`).window;
-assert.ok(home.querySelector('a[href="areas/index.html"]'), 'Homepage should link to the area hub');
+assert.ok(home.querySelector('a[href="areas/"]'), 'Homepage should link to the area hub');
 assert.ok(home.querySelector('a[href="areas/austin.html"]'), 'Homepage footer should link to a city guide');
 assert.ok(home.querySelector('#areaGuideLink'), 'Homepage should include the dynamic area guide link');
 
